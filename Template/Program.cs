@@ -25,3 +25,8 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
+
+
+//6:58 tempo do video
+// https://youtu.be/SHyF8Tc-s8Q?t=418
+//url no tempo atual do video
