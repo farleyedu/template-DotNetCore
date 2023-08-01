@@ -1,5 +1,15 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Template.Data.Context;
 
+var builder = WebApplication.CreateBuilder(args);
+//string connString = builder.Configuration.GetConnectionString("TemplateDB");
+
+builder.Services.AddDbContext<TemplateContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TemplateDB"));
+
+});
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
@@ -13,6 +23,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
+
+
+//builder.Services.AddDbContext<TemplateContext>(opt =>
+//{
+//    opt.UseSqlServer(builder.Configuration.GetConnectionString("TemplateDB"));
+//});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -25,8 +44,3 @@ app.MapControllerRoute(
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
-
-
-//6:58 tempo do video
-// https://youtu.be/SHyF8Tc-s8Q?t=418
-//url no tempo atual do video
